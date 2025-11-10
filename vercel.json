@@ -1,0 +1,37 @@
+{
+  "version": 2,
+  "name": "naturepot",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    },
+    {
+      "src": "api/*.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "env": {
+    "VITE_WHATSAPP_GROUP_URL": "@whatsapp_group_url",
+    "VITE_REGISTRATION_DEADLINE": "@registration_deadline",
+    "VITE_CONTACT_EMAIL": "@contact_email"
+  },
+  "functions": {
+    "api/register.js": {
+      "maxDuration": 10
+    }
+  }
+}
