@@ -105,8 +105,8 @@ const RegistrationForm = () => {
         return
       }
 
-      // Submit to API
-      const response = await fetch('/api/register', {
+      // Submit to API - UPDATED FOR NETLIFY
+      const response = await fetch('/.netlify/functions/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
